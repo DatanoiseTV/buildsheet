@@ -216,7 +216,7 @@ def render_component_pad(cv, bi, c, p, highlight):
     corners = [(cr[0] + c.x, cr[1] + c.y) for cr in corners]
     pth = cv.beginPath()
     pth.moveTo(corners[0][0] - bi.xmin, corners[0][1] - bi.ymin)
-    for i in xrange(1, len(corners)):
+    for i in range(1, len(corners)):
         pth.lineTo(corners[i][0] - bi.xmin, corners[i][1] - bi.ymin)
     cv.setFillColor(HIGHLIGHT_COLOR if highlight else NORMAL_COLOR)
     cv.drawPath(pth, fill=1, stroke=0)
