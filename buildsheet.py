@@ -247,7 +247,7 @@ def layout_by_same_value(cv, bi, layer):
 
         prefixes = { }
         for vc in val_cs:
-            if vc.prefix in prefixes is None:
+            if vc.prefix in prefixes:
                 prefixes[vc.prefix].append(vc)
             else:
                 prefixes[vc.prefix] = [vc]
