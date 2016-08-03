@@ -48,7 +48,7 @@ class Pad():
         self.angle = angle
 
 def getfloat(elem, name):
-    f = elem.get(name, None)
+    f = elem.get(name)
     if f is None:
         raise Exception("Expecting attribute '%s'" % name)
     v = None
@@ -103,7 +103,7 @@ def get_board_info(filename):
     comps = root.xpath("//element")
     ourcomps = [ ]
     for c in comps:
-        compname = c.get("name", None)
+        compname = c.get("name")
         if compname is None or compname == '':
             raise Exception("Component without name")
 
@@ -112,11 +112,11 @@ def get_board_info(filename):
         if m:
             compprefix = m.group(1)
 
-        compvalue = c.get("value", None)
+        compvalue = c.get("value")
         if compvalue is None:
             raise Exception("Component without value")
 
-        package_name = c.get("package", None)
+        package_name = c.get("package")
         if package_name is None:
             raise Exception("Component without package")
         # Find the package.
@@ -144,7 +144,7 @@ def get_board_info(filename):
         ourpads = [ ]
         complayer = None # Assume that all component's pads will be on same layer.
         for p in ppads:
-            if p.get("layer", None) is None:
+            if p.get("layer") is None:
                 raise Exception("Could not get pad layer")
 
             if complayer is None:
@@ -159,7 +159,7 @@ def get_board_info(filename):
             y = getfloat(p, "y")
 
             # Get angle.
-            rot = p.get("rot", None)
+            rot = p.get("rot")
             pangle = None
             if rot is not None:
                 m = re.match(angle_re, rot)
